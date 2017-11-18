@@ -44,19 +44,22 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
         if not statuses:
             break
         for status in statuses:
-            first_lecture_date = lecture_date_times[0]
+            calc_start = lecture_date_times[0] + timedelta(days=1)
             tweet_time = status.created_at
-            if tweet_time < first_lecture_date:
+            if tweet_time < calc_start:
                 cont = False
             if hashtag in status.text:
-                for idx, lecture_start_time in enumerate(lecture_date_times):
+                for idx, lecture_date in enumerate(lecture_date_times):
+                    # 第一回目は集計対象外
                     if idx == 0:
                         continue
-                    previous_lecture_start_time = lecture_date_times[idx - 1]
-                    if previous_lecture_start_time + timedelta(days=1) <= tweet_time < lecture_start_time + timedelta(days=1):
-                        summary[lecture_start_time.strftime(date_fmt)] += 1
+                    previous_lecture_date = lecture_date_times[idx - 1]
+                    start = previous_lecture_date + timedelta(days=1)
+                    end = lecture_date + timedelta(days=1)
+                    if start <= tweet_time < end:
+                        summary[lecture_date.strftime(date_fmt)] += 1
         else:
             max_id = statuses[-1].id - 1
-    # 第一回目は集計対象外
+    # 第一回は集計対象外
     summary.popitem(last=False)
     return summary
