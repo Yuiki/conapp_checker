@@ -29,7 +29,7 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
     date_fmt = '%m/%d'
 
     lecture_dates = [(10, 2), (10, 10), (10, 16), (10, 23), (10, 30), (11, 13)]
-    lecture_start_times = [datetime(2017, date[0], date[1], 6) for date in lecture_dates]
+    lecture_start_times = [datetime(2017, date[0], date[1]) for date in lecture_dates]
     summary = {date.strftime(date_fmt): 0 for date in lecture_start_times}
 
     max_id = api.user_timeline(count=1)[0].id
@@ -50,11 +50,10 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
                 cont = False
             if hashtag in status.text:
                 for idx, lecture_start_time in enumerate(lecture_start_times):
-                    next_lecture_delta = timedelta(weeks=1)
-                    if idx < len(lecture_start_times) - 1:
-                        next_lecture_start_time = lecture_start_times[idx + 1]
-                        next_lecture_delta = next_lecture_start_time - lecture_start_time
-                    dead_line = lecture_start_time + next_lecture_delta
-                    if lecture_start_time <= tweet_time < dead_line:
+                    if idx == 0:
+                        continue
+                    previous_lecture_start_time = lecture_start_times[idx - 1]
+                    if previous_lecture_start_time + timedelta(days=1) <= tweet_time < lecture_start_time + timedelta(days=1):
                         summary[lecture_start_time.strftime(date_fmt)] += 1
+    del summary[lecture_start_times[0].strftime(date_fmt)]
     return summary
