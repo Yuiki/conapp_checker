@@ -49,8 +49,12 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
             if tweet_time < first_lecture_date:
                 cont = False
             if hashtag in status.text:
-                for lecture_start_time in lecture_start_times:
-                    dead_line = lecture_start_time + timedelta(weeks=1)
+                for idx, lecture_start_time in enumerate(lecture_start_times):
+                    next_lecture_delta = timedelta(weeks=1)
+                    if idx < len(lecture_start_times) - 1:
+                        next_lecture_start_time = lecture_start_times[idx + 1]
+                        next_lecture_delta = next_lecture_start_time - lecture_start_time
+                    dead_line = lecture_start_time + next_lecture_delta
                     if lecture_start_time <= tweet_time < dead_line:
                         summary[lecture_start_time.strftime(date_fmt)] += 1
     return summary
