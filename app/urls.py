@@ -1,4 +1,4 @@
-"""conapp_checker URL Configuration
+"""app URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.11/topics/http/urls/
@@ -17,7 +17,7 @@ import django.contrib.auth.views
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from conapp_checker import views
+from app import views
 
 urlpatterns = [
     url(r'^check/$', views.check, name='check'),

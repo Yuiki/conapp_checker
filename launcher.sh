@@ -6,7 +6,7 @@ PIDFILE=$BASEDIR/$PROGNAME.pid
 start() {
   echo "Starting server..."
   cd $BASEDIR
-  gunicorn conapp_checker.wsgi --bind=0.0.0.0:8000 -p $PIDFILE -D
+  gunicorn app.wsgi --bind=0.0.0.0:8000 -p $PIDFILE -D
 }
 
 stop() {
@@ -19,7 +19,7 @@ usage() {
   echo "usage: $PROGNAME start|stop|restart"
 }
 
-if [ $# -lt 1 ];  then
+if [ $# -lt 1 ]; then
   usage
   exit 255
 fi
