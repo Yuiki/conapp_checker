@@ -2,7 +2,7 @@
 {% block content %}
     <h1>これ is 何</h1>
     <p>#コンテンツ応用論2017 の有効ツイート数チェッカーです</p>
-    <p><a href="https://github.com/abeken1011/content-application2017" target="_blank">公式のプログラム</a>を利用せずとも、ページ下部のボタンをクリックしてTwitterで認可すれば、あなたの有効なツイート数が表示されます</p>
+    <p><a href="https://github.com/abeken1011/content-application2017" target="_blank">公式のプログラム</a>を利用せずとも、Twitterで認可すればあなたの有効なツイート数が表示されます</p>
     <p>詳細な判定条件につきましては上記プログラムに準拠していますが、非公式ツールなのでくれぐれも<b>自己責任</b>で確認お願いします</p>
-    <button class="btn btn-primary" onclick="location.href='{% url 'social:begin' 'twitter' %}?next={% url 'check' %}'">Twitterでログインしてチェック</button>
+    <button class="btn btn-primary" onclick="location.href='{% url 'social:begin' 'twitter' %}?next={% url 'check' %}'">Twitterで認可して今すぐチェック</button>
 {% endblock %}
