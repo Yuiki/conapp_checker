@@ -6,7 +6,7 @@ PIDFILE=$BASEDIR/$PROGNAME.pid
 start() {
   echo "Starting server..."
   cd $BASEDIR
-  gunicorn conapp_checker.wsgi --bind=0.0.0.0:8000 -p $PIDFILE -D
+  gunicorn app.wsgi --bind=0.0.0.0:8000 -p $PIDFILE -D
 }
 
 stop() {
