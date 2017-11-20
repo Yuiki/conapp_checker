@@ -19,7 +19,7 @@ usage() {
   echo "usage: $PROGNAME start|stop|restart"
 }
 
-if [ $# -lt 1 ];  then
+if [ $# -lt 1 ]; then
   usage
   exit 255
 fi
