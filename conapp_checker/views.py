@@ -54,6 +54,9 @@ class StatusSummarizer:
         summary = OrderedDict([(period.name, 0) for period in periods])
         calc_start = periods[0].start
         for status in self.fetcher.gen_status():
+            if status.retweeted:
+                continue
+
             tweet_time = status.created_at
             if tweet_time < calc_start:
                 return summary
@@ -95,7 +98,10 @@ class MyStatusFetcher:
             except tweepy.RateLimitError:
                 return
             if statuses:
-                max_id = statuses[-1].id - 1
+                for status in reversed(statuses):
+                    if not status.retweeted:
+                        max_id = status.id - 1
+                        break
             else:
                 return
             for status in statuses:
