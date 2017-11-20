@@ -33,12 +33,12 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
     lecture_date_times = [datetime(2017, date[0], date[1]) for date in lecture_dates]
     summary = OrderedDict([(date.strftime(date_fmt), 0) for date in lecture_date_times])
 
-    max_id = api.user_timeline(count=1)[0].id
+    max_id = -1
 
     cont = True
     while cont:
         try:
-            statuses = api.user_timeline(count=200, max_id=max_id)
+            statuses = get_user_timeline(api, max_id)
         except tweepy.RateLimitError:
             break
         if not statuses:
@@ -63,3 +63,10 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
     # 第一回は集計対象外
     summary.popitem(last=False)
     return summary
+
+
+def get_user_timeline(api, max_id):
+    count = 200
+    if max_id == -1:
+        return api.user_timeline(count=count)
+    return api.user_timeline(count=count, max_id=max_id)
