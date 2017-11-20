@@ -29,7 +29,7 @@ def calc_tweet_summary(consumer_key, consumer_secret, access_token, access_token
     hashtag = '#コンテンツ応用論2017'
     date_fmt = '%m/%d'
 
-    lecture_dates = [(10, 2), (10, 10), (10, 16), (10, 23), (10, 30), (11, 13)]
+    lecture_dates = [(10, 2), (10, 10), (10, 16), (10, 23), (10, 30), (11, 13), (11, 20)]
     lecture_date_times = [datetime(2017, date[0], date[1]) for date in lecture_dates]
     summary = OrderedDict([(date.strftime(date_fmt), 0) for date in lecture_date_times])
 
