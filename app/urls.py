@@ -20,9 +20,10 @@ from django.contrib import admin
 from app import views
 
 urlpatterns = [
-    url(r'^check/$', views.check, name='check'),
+    url(r'^result/$', views.result, name='result'),
     url(r'^admin/', admin.site.urls),
     url(r'', include('social_django.urls', namespace='social')),
+    url(r'^check/$', views.check, name='fetch'),
     url(r'^$',
         django.contrib.auth.views.login,
         {
