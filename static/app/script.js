@@ -1,3 +1,4 @@
+waitingDialog.show('ツイートを分析しています...');
 $.ajax({
     type: 'GET',
     url: '../check',
@@ -10,6 +11,7 @@ $.ajax({
             var tdValue = rows.insertCell(-1);
             tdKey.innerHTML = key;
             tdValue.innerHTML = response[key];
+            waitingDialog.hide()
         }
         return response;
     },

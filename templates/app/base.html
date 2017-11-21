@@ -1,10 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8">
     <title>#コンテンツ応用論2017 ツイート数チェッカー(非公式)</title>
-    {% load bootstrap3 %}
-    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.css" %}">
+    <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap-theme.css" %}">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
