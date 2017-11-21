@@ -1,20 +1,17 @@
 {% extends "app/base.html" %}
+{% load static %}
 {% block content %}
     <h1>@{{ username }} さんの有効なツイート数</h1>
-    <table class="table">
+    <table class="table" id="table">
     <thead>
     <tr>
         <th>講義日</th>
         <th>有効なツイート数</th>
     </tr>
     </thead>
-        {% for date, count in summary.items %}
-            <tr>
-                <td>{{ date }}</td>
-                <td>{{ count }}</td>
-            </tr>
-        {% endfor %}
     </table>
     <p>※一回前の講義翌日の00:00から講義日の24:00までの、認可したアカウントによるRTを除いたツイートのうち #コンテンツ応用論2017 が含まれているものを有効なツイートとしてカウントしています</p>
     <p>詳細な判定条件につきましては<a href="https://github.com/abeken1011/content-application2017" target="_blank">公式の出席判定プログラム</a>に準拠していますが、非公式ツールなのでくれぐれも<b>自己責任</b>で確認お願いします</p>
+    <script type="text/javascript" src="{% static "app/jquery-3.2.1.min.js" %}"></script>
+    <script type="text/javascript" src="{% static "app/script.js" %}"></script>
 {% endblock %}
