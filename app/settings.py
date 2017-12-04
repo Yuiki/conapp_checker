@@ -120,6 +120,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "templates/app/js"),
+    os.path.join(BASE_DIR, "templates/app/css"),
     os.path.join(BASE_DIR, "bower_components"),
 )
 

@@ -3,21 +3,23 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>#コンテンツ応用論2017 ツイート数チェッカー(非公式)</title>
     <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap.css" %}">
     <link rel="stylesheet" href="{% static "bootstrap/dist/css/bootstrap-theme.css" %}">
+    <link rel="stylesheet" href="{% static "base.css" %}">
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="navbar-header">
-        <a href="/" class="navbar-brand">#コンテンツ応用論2017 ツイート数チェッカー(非公式)</a>
+        <a href="/" class="navbar-brand">コン応2017 出席チェッカー(非公式)</a>
     </div>
 </nav>
 <div class="container">
     {% block content %}{% endblock %}
 </div>
-<nav class="navbar navbar-fixed-bottom">
-    <div class="container">
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container" id="footer">
         <p>Welcome contribution at <a href="https://github.com/Yuiki/conapp_checker" target="_blank">GitHub</a></p>
         <a class="twitter-share-button" href="https://twitter.com/intent/tweet?url=https://conapp.yuiki.jp/">Tweet</a>
         <a class="twitter-follow-button" href="https://twitter.com/yuikimil">Follow @yuikimil</a>
