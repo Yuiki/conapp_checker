@@ -9,7 +9,7 @@ def summarize_conapp_statuses(consumer_key, consumer_secret, access_token, acces
     status_fetcher = MyStatusFetcher(consumer_key, consumer_secret, access_token, access_token_secret)
     hashtag = '#コンテンツ応用論2017'
     # 第一回は集計対象外
-    lecture_dates = [(10, 2), (10, 10), (10, 16), (10, 23), (10, 30), (11, 13), (11, 20), (12, 4)]
+    lecture_dates = [(10, 2), (10, 10), (10, 16), (10, 23), (10, 30), (11, 13), (11, 20), (12, 4), (12, 18)]
     periods = []
     date_fmt = '%m/%d'
     for idx, date in enumerate(lecture_dates):
